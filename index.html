@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Una sorpresa para Fernelis 💗</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-family: Arial, sans-serif;
+
+            background:
+                radial-gradient(circle at top, #ffb6d9, #ff69a8 45%, #8e2de2);
+
+            color: white;
+        }
+
+        .contenedor {
+            position: relative;
+            z-index: 10;
+            width: 90%;
+            max-width: 500px;
+            padding: 35px 25px;
+
+            text-align: center;
+
+            background: rgba(255, 255, 255, 0.18);
+            border: 2px solid rgba(255,255,255,0.5);
+            border-radius: 30px;
+
+            backdrop-filter: blur(10px);
+
+            box-shadow:
+                0 0 30px rgba(255,255,255,0.3),
+                0 0 70px rgba(255,105,180,0.5);
+        }
+
+        h1 {
+            font-size: 38px;
+            margin: 0 0 15px;
+            text-shadow: 0 0 15px #fff;
+        }
+
+        .subtitulo {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        button {
+            border: none;
+            padding: 15px 30px;
+
+            border-radius: 50px;
+
+            background: #ff1493;
+            color: white;
+
+            font-size: 18px;
+            font-weight: bold;
+
+            cursor: pointer;
+
+            box-shadow: 0 0 20px rgba(255,20,147,0.7);
+
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            background: #ff69b4;
+        }
+
+        #mensaje {
+            display: none;
+            animation: aparecer 1.5s ease;
+        }
+
+        #mensaje h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        #respuesta {
+            font-size: 45px;
+            font-weight: bold;
+
+            text-shadow:
+                0 0 10px white,
+                0 0 20px #ff1493,
+                0 0 40px #ff1493;
+        }
+
+        .flores {
+            font-size: 35px;
+            margin: 15px 0;
+        }
+
+        @keyframes aparecer {
+            from {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .corazon,
+        .flor {
+            position: fixed;
+            top: -50px;
+
+            z-index: 1;
+
+            pointer-events: none;
+
+            animation: caer linear forwards;
+        }
+
+        .corazon {
+            color: #ff1744;
+            filter: drop-shadow(0 0 8px #ff1744);
+        }
+
+        .flor {
+            filter: drop-shadow(0 0 8px #fff);
+        }
+
+        @keyframes caer {
+            0% {
+                transform: translateY(-50px) rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .firma {
+            margin-top: 25px;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="contenedor">
+
+        <div id="inicio">
+
+            <div class="flores">
+                🌸 🌹 🌷
+            </div>
+
+            <h1>💗 ¡Fernelis! 💗</h1>
+
+            <p class="subtitulo">
+                Tengo una pregunta muy importante para ti... 👀
+            </p>
+
+            <button onclick="revelar()">
+                💖 DESCUBRIR 💖
+            </button>
+
+        </div>
+
+
+        <div id="mensaje">
+
+            <div class="flores">
+                🌸 🌹 🌷 🌺
+            </div>
+
+            <h2>💗 FERNELIS 💗</h2>
+
+            <p>La pregunta del millón...</p>
+
+            <div id="respuesta">
+                ¿ES GAY? 🌈
+            </div>
+
+            <div class="flores">
+                🌹 💐 🌸
+            </div>
+
+            <p style="font-size: 25px;">
+                💕 ¡TÚ DECIDES! 💕
+            </p>
+
+            <button onclick="volver()">
+                🌸 Volver 🌸
+            </button>
+
+        </div>
+
+        <div class="firma">
+            Hecho con 💗 y demasiadas flores 🌸
+        </div>
+
+    </div>
+
+
+    <script>
+
+        function revelar() {
+
+            document.getElementById("inicio").style.display = "none";
+
+            document.getElementById("mensaje").style.display = "block";
+
+            crearConfeti();
+        }
+
+
+        function volver() {
+
+            document.getElementById("mensaje").style.display = "none";
+
+            document.getElementById("inicio").style.display = "block";
+        }
+
+
+        function crearConfeti() {
+
+            for (let i = 0; i < 35; i++) {
+
+                setTimeout(() => {
+
+                    const elemento = document.createElement("div");
+
+                    const elementos = [
+                        "❤️",
+                        "💗",
+                        "💕",
+                        "💖",
+                        "💘",
+                        "🌸",
+                        "🌹",
+                        "🌷",
+                        "🌺"
+                    ];
+
+                    elemento.innerHTML =
+                        elementos[Math.floor(Math.random() * elementos.length)];
+
+                    elemento.classList.add(
+                        elemento.innerHTML.includes("🌸") ||
+                        elemento.innerHTML.includes("🌹") ||
+                        elemento.innerHTML.includes("🌷") ||
+                        elemento.innerHTML.includes("🌺")
+                        ? "flor"
+                        : "corazon"
+                    );
+
+                    elemento.style.left =
+                        Math.random() * 100 + "vw";
+
+                    elemento.style.fontSize =
+                        (20 + Math.random() * 30) + "px";
+
+                    elemento.style.animationDuration =
+                        (3 + Math.random() * 5) + "s";
+
+                    document.body.appendChild(elemento);
+
+                    setTimeout(() => {
+                        elemento.remove();
+                    }, 8000);
+
+                }, i * 100);
+            }
+        }
+
+
+        // Corazones y flores que caen continuamente
+
+        setInterval(() => {
+
+            const elemento = document.createElement("div");
+
+            const elementos = [
+                "❤️",
+                "💗",
+                "💕",
+                "🌸",
+                "🌹",
+                "🌷"
+            ];
+
+            elemento.innerHTML =
+                elementos[Math.floor(Math.random() * elementos.length)];
+
+            elemento.classList.add(
+                Math.random() > 0.5 ? "corazon" : "flor"
+            );
+
+            elemento.style.left =
+                Math.random() * 100 + "vw";
+
+            elemento.style.fontSize =
+                (15 + Math.random() * 25) + "px";
+
+            elemento.style.animationDuration =
+                (5 + Math.random() * 5) + "s";
+
+            document.body.appendChild(elemento);
+
+            setTimeout(() => {
+                elemento.remove();
+            }, 10000);
+
+        }, 500);
+
+    </script>
+
+</body>
+</html>
